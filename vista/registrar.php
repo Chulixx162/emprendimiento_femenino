@@ -80,7 +80,7 @@
         <div class="mensaje error">Ocurrió un error al registrar.</div>
     <?php endif; ?>
 
-    <form action="../controllers/UsuarioController.php" method="POST" onsubmit="return validarFormulario()">
+    <form action="../controlador/usuarias_c.php?accion=registrar" method="POST" onsubmit="return validarFormulario()">
         <h2>Registro de Emprendedoras</h2>
         <select name="tipo_identificacion" required>
             <option value="">Tipo de Identificación</option>
