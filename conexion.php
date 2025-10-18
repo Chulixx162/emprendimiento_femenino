@@ -2,7 +2,7 @@
 $host="localhost";
 $user="root";
 $pass="";
-$db="sistema_login";
+$db="plataforma_talleres";
 $conn=mysqli_connect($host,$user,$pass,$db);
 
 if (!$conn) {
