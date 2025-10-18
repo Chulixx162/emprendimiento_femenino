@@ -4,61 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Registro de Emprendedoras</title>
-    <style>
-        body {
-            font-family: Arial;
-            background: #f2f2f2;
-        }
-
-        form {
-            max-width: 500px;
-            margin: 30px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-        }
-
-        button {
-            background: #2c89e8;
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #1c5eb5;
-        }
-
-        .mensaje {
-            padding: 10px;
-            margin-bottom: 10px;
-            text-align: center;
-            border-radius: 5px;
-        }
-
-        .exito {
-            background: #c8f7c5;
-            color: #2e7d32;
-        }
-
-        .error {
-            background: #ffcdd2;
-            color: #c62828;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/registrar.css">
     <script>
         function validarFormulario() {
             const pass = document.getElementById("password").value;
             const pass2 = document.getElementById("password2").value;
+
             if (pass !== pass2) {
                 alert("Las contraseñas no coinciden");
                 return false;
@@ -73,35 +24,72 @@
 </head>
 
 <body>
-
     <?php if (isset($_GET['exito'])): ?>
         <div class="mensaje exito">¡Registro exitoso!</div>
     <?php elseif (isset($_GET['error'])): ?>
         <div class="mensaje error">Ocurrió un error al registrar.</div>
     <?php endif; ?>
 
-    <form action="../controllers/UsuarioController.php" method="POST" onsubmit="return validarFormulario()">
-        <h2>Registro de Emprendedoras</h2>
-        <select name="tipo_identificacion" required>
-            <option value="">Tipo de Identificación</option>
-            <option value="CC">Cédula de Ciudadanía</option>
-            <option value="TI">Tarjeta de Identidad</option>
-            <option value="CE">Cédula de Extranjería</option>
-        </select>
+    <div class="container">
+        <div class="register-card">
+            <h1>Registro de Emprendedoras 💜</h1>
+            <p>Completa tus datos para unirte a la comunidad</p>
 
-        <input type="text" name="numero_identificacion" placeholder="Número de identificación" required>
-        <input type="text" name="nombre_completo" placeholder="Nombre completo" required>
-        <input type="email" name="correo" placeholder="Correo electrónico" required>
-        <input type="text" name="celular" placeholder="Número de celular" required>
+            <form action="../controllers/UsuarioController.php" method="POST" onsubmit="return validarFormulario()">
 
-        <input type="text" name="intereses" placeholder="Intereses (Ej: Finanzas, Marketing)" required>
+                <div class="input-group">
+                    <label>Tipo de Identificación</label>
+                    <select name="tipo_identificacion" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="CC">Cédula de Ciudadanía</option>
+                        <option value="TI">Tarjeta de Identidad</option>
+                        <option value="CE">Cédula de Extranjería</option>
+                    </select>
+                </div>
 
-        <input type="password" id="password" name="password" placeholder="Contraseña" required>
-        <input type="password" id="password2" placeholder="Confirmar contraseña" required>
+                <div class="input-group">
+                    <label>Número de identificación</label>
+                    <input type="text" name="numero_identificacion" required>
+                </div>
 
-        <button type="submit">Registrarse</button>
-    </form>
+                <div class="input-group">
+                    <label>Nombre completo</label>
+                    <input type="text" name="nombre_completo" required>
+                </div>
 
+                <div class="input-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" name="correo" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Número de celular</label>
+                    <input type="text" name="celular" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Intereses</label>
+                    <input type="text" name="intereses" placeholder="Ej: Finanzas, Marketing" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Confirmar contraseña</label>
+                    <input type="password" id="password2" required>
+                </div>
+
+                <button type="submit" class="btn-register">Registrarse</button>
+
+                <div class="extra-links">
+                    <a href="login.php">¿Ya tienes cuenta? Inicia sesión</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
